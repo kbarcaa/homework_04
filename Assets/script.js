@@ -3,35 +3,37 @@
 var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
+// function writePassword() {
+//   var password = generatePassword();
+//   var passwordText = document.querySelector("#password");
 
-  passwordText.value = password;
-}
+//   passwordText.value = password;
+// }
 
 var h1Tag = document.getElementById("password")
 
 
 function getPwOptions(){
   // Asking pw length. switched string --> numbers by 'parseInt' 
-  var pwLength = parseInt(prompt("Please enter the desired length for the password"));
-  if(pwLength < 8 || pwLength > 128) {
-    alert("Password must be bewtween 8 and 128 characters");
-    var pwLength = parseInt(prompt("Please enter the desired length for the password"));
-    while (pwLength < 8 || pwLength > 128) {
-      alert("Password must be bewtween 8 and 128 characters")
-      var pwLength = parseInt(prompt("Please enter the desired length for the password"));
-    };
-  }
-  else if (pwLength >= 8 || pwLength < 129){
+  var pwLength = parseInt(prompt("Please enter the desired length for the password."));
+  if(pwLength <= 7 || pwLength >= 129) {
+    alert("Password must be bewtween 8 and 128 characters.");
+    var pwLength = parseInt(prompt("Please enter the desired length for the password."));
+    while (pwLength <= 7 || pwLength >= 129) {
+      alert("Password must be bewtween 8 and 128 characters.");
+      getPwOptions()};
+  } 
+  else if (pwLength > 7 || pwLength < 129){
     alert("The length of your password will be: " + pwLength);
     console.log("The length of your password will be: " + pwLength);
+  }
+  else {
+    alert ("Must enter a number. Please try again.");
+    getPwOptions();
   };
 
   var number = confirm("Do you want numbers in your password?");
   if (number === true) {
-    alert("The password will include numbers");
     console.log("The password will include numbers.")
   }
   else {
@@ -41,7 +43,6 @@ function getPwOptions(){
 
   var pwUpper = confirm("Do you want upper case alphabets in your password?");
   if (pwUpper === true) {
-    alert("The password will include upper case alphabets");
     console.log("The password will include upper case alphabets.")
   }
   else {
@@ -51,13 +52,14 @@ function getPwOptions(){
 
   var pwSpecialChar = confirm("Do you want special characters in your password?");
   if (pwSpecialChar === true) {
-    alert("The password will include special characters");
     console.log("The password will include special characters.")
   }
   else {
     alert("The password will NOT include special characters.");
     console.log("The password will NOT include special characters.");
 };
+
+console.log("Result: " + "(Numbers: " + number + "); (Upper Case: " + pwUpper +"); (Special Characters: " + pwSpecialChar + ")") ;
 
 
 // Combo1: Password with all 3 options
