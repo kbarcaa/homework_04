@@ -14,24 +14,32 @@ var h1Tag = document.getElementById("password")
 
 
 function getPwOptions(){
-  // Asking pw length. switched string --> numbers by 'parseInt' 
-  var pwLength = parseInt(prompt("Please enter the desired length for the password."));
+   // Function to run Qs for pw length
+  getPwLength();
   
-  if(pwLength <= 7 || pwLength >= 129) {
-    alert("Password must be bewtween 8 and 128 characters.");
-    var pwLength = parseInt(prompt("Please enter the desired length for the password."));
-    while (pwLength <= 7 || pwLength >= 129) {
+  function getPwLength(){
+    // Asking pw length. switched string --> numbers by 'parseInt' 
+    pwLength = parseInt(prompt("Please enter the desired length for the password."));
+  
+
+    if(pwLength <= 7 || pwLength >= 129) {
       alert("Password must be bewtween 8 and 128 characters.");
-    };
-  } 
-  else if (pwLength > 7 || pwLength < 129){
-    alert("The length of your password will be: " + pwLength);
-    console.log("The length of your password will be: " + pwLength);
+      // var pwLength = parseInt(prompt("Please enter the desired length for the password."));
+      // while (pwLength <= 7 || pwLength >= 129) {
+      //   alert("Password must be bewtween 8 and 128 characters.");
+      // };
+      getPwLength();
+    } 
+    else if (pwLength > 7 || pwLength < 129){
+      alert("The length of your password will be: " + pwLength);
+      console.log("The length of your password will be: " + pwLength);
+    }
+    else {
+      alert ("Must enter a number. Please try again.");
+      // var pwLength = parseInt(prompt("Please enter the desired length for the password."));
+      getPwLength();
+    }
   }
-  else {
-    alert ("Must enter a number. Please try again.");
-    var pwLength = parseInt(prompt("Please enter the desired length for the password."));
-  };
 
   var number = confirm("Do you want numbers in your password?");
   if (number === true) {
@@ -196,7 +204,7 @@ else if (number === true && pwUpper === true && pwSpecialChar !== true){
 } 
 
 // Combo 8: Nothing. Redo alert.
-else if (number !== true && pwUpper !== true && pwSpecialChar !== true){
+  else if (number !== true && pwUpper !== true && pwSpecialChar !== true){
   alert("The password must contain at least one of the 3 options. Please try again.");
   }
 }
