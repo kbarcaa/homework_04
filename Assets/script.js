@@ -68,7 +68,7 @@ function getPwOptions(){
     console.log("The password will NOT include special characters.");
 };
 
-console.log("Result: " + "(Numbers: " + number + "); (Upper Case: " + pwUpper +"); (Special Characters: " + pwSpecialChar + ")") ;
+console.log("Result: " + "[Numbers: " + number + "]; [Upper Case: " + pwUpper +"]; [Special Characters: " + pwSpecialChar + "]") ;
 
 
 // Combo1: Password with all 3 options
