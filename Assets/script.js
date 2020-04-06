@@ -16,12 +16,13 @@ var h1Tag = document.getElementById("password")
 function getPwOptions(){
   // Asking pw length. switched string --> numbers by 'parseInt' 
   var pwLength = parseInt(prompt("Please enter the desired length for the password."));
+  
   if(pwLength <= 7 || pwLength >= 129) {
     alert("Password must be bewtween 8 and 128 characters.");
     var pwLength = parseInt(prompt("Please enter the desired length for the password."));
     while (pwLength <= 7 || pwLength >= 129) {
       alert("Password must be bewtween 8 and 128 characters.");
-      getPwOptions()};
+    };
   } 
   else if (pwLength > 7 || pwLength < 129){
     alert("The length of your password will be: " + pwLength);
@@ -29,7 +30,7 @@ function getPwOptions(){
   }
   else {
     alert ("Must enter a number. Please try again.");
-    getPwOptions();
+    var pwLength = parseInt(prompt("Please enter the desired length for the password."));
   };
 
   var number = confirm("Do you want numbers in your password?");
@@ -65,16 +66,18 @@ console.log("Result: " + "(Numbers: " + number + "); (Upper Case: " + pwUpper +"
 // Combo1: Password with all 3 options
 if (number === true && pwUpper === true && pwSpecialChar === true){
 
-  function generate(pwLength) {
-    var result           = '';
-    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789`~!@#$%^&*()-_=+';
-    var charactersLength = characters.length;
-    for ( var i = 0; i < pwLength; i++ ) {
-       result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  function generate(length) {
+
+    var result = '';
+    var options = {
+    set1: [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "n", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-"], 
+    };
+
+    for(var i = 0; i < length; i++){
+      result += options.set1[Math.floor(Math.random() *  options.set1.length)];
     }
-    console.log(result);
     return result;
- }
+  }
  
  h1Tag.textContent = generate(pwLength);
 }
@@ -82,96 +85,112 @@ if (number === true && pwUpper === true && pwSpecialChar === true){
 // Combo2:Password with no number
 else if (number !== true && pwUpper === true && pwSpecialChar === true){
 
-  function generate(pwLength) {
-    var result           = '';
-    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz`~!@#$%^&*()-_=+';
-    var charactersLength = characters.length;
-    for ( var i = 0; i < pwLength; i++ ) {
-       result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  function generate(length) {
+
+    var result = '';
+    var options = {
+    set1: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "n", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-"], 
+    };
+
+    for(var i = 0; i < length; i++){
+      result += options.set1[Math.floor(Math.random() *  options.set1.length)];
     }
-    console.log(result);
     return result;
- };
+  }
  h1Tag.textContent = generate(pwLength);
 }
 
 // Combo3: Password with no number && no upper case
 else if (number !== true && pwUpper !== true && pwSpecialChar === true){
 
-  function generate(pwLength) {
-    var result           = '';
-    var characters       = 'abcdefghijklmnopqrstuvwxyz`~!@#$%^&*()-_=+';
-    var charactersLength = characters.length;
-    for ( var i = 0; i < pwLength; i++ ) {
-       result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  function generate(length) {
+
+    var result = '';
+    var options = {
+    set1: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "n", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-"], 
+    };
+
+    for(var i = 0; i < length; i++){
+      result += options.set1[Math.floor(Math.random() *  options.set1.length)];
     }
-    console.log(result);
     return result;
- };
+  }
+ 
  h1Tag.textContent = generate(pwLength);
 }
 
 // Combo4: Password with no number && no special case
 else if (number !== true && pwUpper === true && pwSpecialChar !== true){
 
-  function generate(pwLength) {
-    var result           = '';
-    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    var charactersLength = characters.length;
-    for ( var i = 0; i < pwLength; i++ ) {
-       result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  function generate(length) {
+
+    var result = '';
+    var options = {
+    set1: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "n", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"], 
+    };
+
+    for(var i = 0; i < length; i++){
+      result += options.set1[Math.floor(Math.random() *  options.set1.length)];
     }
-    console.log(result);
     return result;
- };
+  }
+ 
  h1Tag.textContent = generate(pwLength);
 }
 
 // Combo5: Password with no upper case
 else if (number === true && pwUpper !== true && pwSpecialChar === true){
   
-  function generate(pwLength) {
-    var result           = '';
-    var characters       = 'abcdefghijklmnopqrstuvwxyz0123456789`~!@#$%^&*()-_=+';
-    var charactersLength = characters.length;
-    for ( var i = 0; i < pwLength; i++ ) {
-       result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  function generate(length) {
+
+    var result = '';
+    var options = {
+    set1: [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "n", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-"], 
+    };
+
+    for(var i = 0; i < length; i++){
+      result += options.set1[Math.floor(Math.random() *  options.set1.length)];
     }
-    console.log(result);
     return result;
- };
+  }
+ 
  h1Tag.textContent = generate(pwLength);
 }
 
 // Combo6: Password with no upper case && no special character
 else if (number === true && pwUpper !== true && pwSpecialChar !== true){
 
-  function generate(pwLength) {
-    var result           = '';
-    var characters       = 'abcdefghijklmnopqrstuvwxyz0123456789';
-    var charactersLength = characters.length;
-    for ( var i = 0; i < pwLength; i++ ) {
-       result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  function generate(length) {
+
+    var result = '';
+    var options = {
+    set1: [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "n", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",], 
+    };
+
+    for(var i = 0; i < length; i++){
+      result += options.set1[Math.floor(Math.random() *  options.set1.length)];
     }
-    console.log(result);
     return result;
- };
+  }
+ 
  h1Tag.textContent = generate(pwLength);
 }
 
 // Combo7: Password with no special case
 else if (number === true && pwUpper === true && pwSpecialChar !== true){
   
-  function generate(pwLength) {
-    var result           = '';
-    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    var charactersLength = characters.length;
-    for ( var i = 0; i < pwLength; i++ ) {
-       result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  function generate(length) {
+
+    var result = '';
+    var options = {
+    set1: [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "n", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"], 
+    };
+
+    for(var i = 0; i < length; i++){
+      result += options.set1[Math.floor(Math.random() *  options.set1.length)];
     }
-    console.log(result);
     return result;
- };
+  }
  
  h1Tag.textContent = generate(pwLength);
 } 
